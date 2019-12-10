@@ -3,10 +3,10 @@ ENV USERMAP_UID 1000
 ENV EXPOSED_PORT 5000
 ENV EXPOSED_UDP_PORT 2000/udp
 
-RUN set -exo pipefail \
+RUN set -euxo pipefail \
     && apk add --no-cache \
         rsyslog curl \
-    && apk del syslog-ng \
+#    && apk del syslog-ng \
     && mkdir -p /etc/rsyslog.d \
     && touch /var/log/haproxy.log \
     && ln -sf /dev/stdout /var/log/haproxy.log
