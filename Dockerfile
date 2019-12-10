@@ -6,7 +6,6 @@ ENV EXPOSED_UDP_PORT 2000/udp
 RUN set -euxo pipefail \
     && apk add --no-cache \
         rsyslog curl \
-#    && apk del syslog-ng \
     && mkdir -p /etc/rsyslog.d \
     && touch /var/log/haproxy.log \
     && ln -sf /dev/stdout /var/log/haproxy.log
