@@ -15,7 +15,11 @@ COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
 COPY rsyslog.conf /etc/rsyslog.conf
 
 RUN echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/repositories && \
-    apk --no-cache add shadow && usermod -u 1000 haproxy && \
+    apk --no-cache add shadow && \
+    usermod -l default-haproxy haproxy && \
+    groupmod -n default-haproxy haproxy
+
+RUN adduser -D -u 1000 haproxy && \
     chown -R 1000 docker-entrypoint.sh && \
     chmod 700 docker-entrypoint.sh && \
     chown -R 1000 /var/run/
