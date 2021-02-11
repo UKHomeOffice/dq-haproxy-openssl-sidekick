@@ -1,4 +1,4 @@
-# dq-haproxy-openssl-sidekick
+# dq-haproxy-openssl-sidekick.
 
 Simple wrap around haproxy to act as a sidekick for openssl TCP services
 
