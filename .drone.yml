@@ -8,5 +8,6 @@ pipeline:
     tags:
       - ${DRONE_COMMIT_SHA}
       - ${DRONE_REPO_BRANCH}
+      - b${DRONE_BUILD_NUMBER}
     when:
       event: push
