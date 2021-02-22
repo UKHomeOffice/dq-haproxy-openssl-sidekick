@@ -21,7 +21,9 @@ RUN adduser -D -u 1000 dq-haproxy -G haproxy && \
     #usermod -a -G haproxy dq-haproxy && \
     chown -R 1000 docker-entrypoint.sh && \
     chmod 700 docker-entrypoint.sh && \
-    chown -R 1000 /var/run/
+    chown -R 1000 /var/run/ && \
+    chown /usr/local/etc/haproxy/haproxy.cfg && \
+    chown /etc/rsyslog.conf
 
 
 USER ${USERMAP_UID}
