@@ -23,5 +23,6 @@ pipeline:
         - ${DRONE_COMMIT_SHA}
         - ${DRONE_REPO_BRANCH}
       when:
+        branch:
+          include: [ master ]
         event: push
-        branch: master
