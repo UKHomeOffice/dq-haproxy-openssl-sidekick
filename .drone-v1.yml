@@ -1,0 +1,56 @@
+---
+kind: pipeline
+name: default
+type: kubernetes
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build
+  pull: if-not-exists
+  image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
+  settings:
+    force_tag: true
+    registry: quay.io
+    repo: quay.io/ukhomeofficedigital/dq-haproxy-openssl-sidekick
+    tags:
+    - ${DRONE_COMMIT_SHA}
+    - b${DRONE_BUILD_NUMBER}-test
+  environment:
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  when:
+    branch:
+      exclude:
+      - master
+    event:
+    - push
+
+- name: build_master
+  pull: if-not-exists
+  image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
+  settings:
+    force_tag: true
+    registry: quay.io
+    repo: quay.io/ukhomeofficedigital/dq-haproxy-openssl-sidekick
+    tags:
+    - ${DRONE_COMMIT_SHA}
+    - ${DRONE_REPO_BRANCH}
+  environment:
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  when:
+    branch:
+    - master
+    event:
+    - push
+
+services:
+  - name: docker
+    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
