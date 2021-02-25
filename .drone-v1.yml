@@ -10,7 +10,7 @@ platform:
 steps:
 - name: build
   pull: if-not-exists
-  image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
+  image: plugins/docker
   settings:
     force_tag: true
     registry: quay.io
@@ -32,7 +32,7 @@ steps:
 
 - name: build_master
   pull: if-not-exists
-  image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
+  image: plugins/docker
   settings:
     force_tag: true
     registry: quay.io
