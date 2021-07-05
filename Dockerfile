@@ -5,6 +5,8 @@ ENV EXPOSED_UDP_PORT 2000/udp
 
 USER root
 
+RUN apk update && apk upgrade
+
 RUN set -euxo pipefail \
     && apk add --no-cache \
         rsyslog curl \
