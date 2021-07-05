@@ -3,6 +3,8 @@ ENV USERMAP_UID 1000
 ENV EXPOSED_PORT 5000
 ENV EXPOSED_UDP_PORT 2000/udp
 
+USER root
+
 RUN set -euxo pipefail \
     && apk add --no-cache \
         rsyslog curl \
