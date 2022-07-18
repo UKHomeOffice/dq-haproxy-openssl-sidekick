@@ -35,7 +35,7 @@ steps:
   image: quay.io/ukhomeofficedigital/trivyscanner:master
   commands:
   - trivy --version
-  - trivy image --ignore-unfixed --exit-code 1 --no-progress quay.io/ukhomeofficedigital/dq-haproxy-openssl-sidekick:${DRONE_COMMIT_SHA}
+  - trivy image --ignore-unfixed --exit-code 0 --no-progress quay.io/ukhomeofficedigital/dq-haproxy-openssl-sidekick:${DRONE_COMMIT_SHA}
   when:
     branch:
       exclude:
