@@ -30,6 +30,19 @@ steps:
     event:
     - push
 
+- name: trivy_scan
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/trivyscanner:master
+  commands:
+  - trivy --version
+  - trivy image --ignore-unfixed --exit-code 1 --no-progress quay.io/ukhomeofficedigital/dq-haproxy-openssl-sidekick:${DRONE_COMMIT_SHA}
+  when:
+    branch:
+      exclude:
+      - master
+    event:
+    - push
+
 - name: build_master
   pull: if-not-exists
   image: plugins/docker
