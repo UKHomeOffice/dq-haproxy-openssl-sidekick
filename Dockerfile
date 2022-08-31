@@ -1,6 +1,6 @@
 FROM haproxytech/haproxy-alpine:2.6
 
-ENV USERMAP_UID 1000
+ENV USERMAP_UID 1001
 ENV EXPOSED_PORT 5000
 ENV EXPOSED_UDP_PORT 2000/udp
 
@@ -22,12 +22,12 @@ COPY rsyslog.conf /etc/rsyslog.conf
 RUN echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/repositories && \
     apk --no-cache add shadow
 
-RUN adduser -D -u 1000 dq-haproxy -G haproxy && \
-    chown 1000 docker-entrypoint.sh && \
+RUN adduser -D -u 1001 dq-haproxy -G haproxy && \
+    chown 1001 docker-entrypoint.sh && \
     chmod 700 docker-entrypoint.sh && \
-    chown -R 1000 /var/run/ && \
-    chown 1000 /usr/local/etc/haproxy/haproxy.cfg && \
-    chown 1000 /etc/rsyslog.conf
+    chown -R 1001 /var/run/ && \
+    chown 1001 /usr/local/etc/haproxy/haproxy.cfg && \
+    chown 1001 /etc/rsyslog.conf
 
 
 USER ${USERMAP_UID}
