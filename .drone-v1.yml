@@ -52,7 +52,7 @@ steps:
     repo: quay.io/ukhomeofficedigital/dq-haproxy-openssl-sidekick
     tags:
     - b${DRONE_BUILD_NUMBER}
-    - ${DRONE_REPO_BRANCH}
+    - latest
   environment:
     DOCKER_PASSWORD:
       from_secret: docker_password
@@ -62,7 +62,9 @@ steps:
     branch:
     - master
     event:
-    - push
+    - promote
+    target:
+    - production  
 
 services:
   - name: docker
