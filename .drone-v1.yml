@@ -17,7 +17,7 @@ steps:
     repo: quay.io/ukhomeofficedigital/dq-haproxy-openssl-sidekick
     tags:
     - ${DRONE_COMMIT_SHA}
-    - b${DRONE_BUILD_NUMBER}-test
+    - dev-${DRONE_BUILD_NUMBER}
   environment:
     DOCKER_PASSWORD:
       from_secret: docker_password
@@ -51,7 +51,7 @@ steps:
     registry: quay.io
     repo: quay.io/ukhomeofficedigital/dq-haproxy-openssl-sidekick
     tags:
-    - ${DRONE_COMMIT_SHA}
+    - b${DRONE_BUILD_NUMBER}
     - ${DRONE_REPO_BRANCH}
   environment:
     DOCKER_PASSWORD:
