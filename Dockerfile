@@ -1,4 +1,4 @@
-FROM haproxytech/haproxy-alpine:2.6
+FROM haproxytech/haproxy-alpine:2.7
 
 ENV USERMAP_UID 1001
 ENV EXPOSED_PORT 5000
