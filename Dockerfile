@@ -21,8 +21,8 @@ COPY rsyslog.conf /etc/rsyslog.conf
 RUN apk add shadow 
 
 RUN adduser -D -u 1000 dq-haproxy -G haproxy && \
-    chown 1000 /docker-entrypoint.sh && \
-    chmod 700 /docker-entrypoint.sh && \
+    chown 1000 ./docker-entrypoint.sh && \
+    chmod 700 ./docker-entrypoint.sh && \
     chown -R 1000 /var/run/ && \
     chown 1000 /usr/local/etc/haproxy/haproxy.cfg && \
     chown 1000 /etc/rsyslog.conf
