@@ -2,6 +2,7 @@ FROM haproxy:alpine3.18
 ENV USERMAP_UID 1000
 ENV EXPOSED_PORT 5000
 ENV EXPOSED_UDP_PORT 2000/udp
+LABEL name="haproxy:alpine3.18"
 
 USER root
 
