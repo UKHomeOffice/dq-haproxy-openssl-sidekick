@@ -33,6 +33,6 @@ USER ${USERMAP_UID}
 EXPOSE ${EXPOSED_PORT}
 EXPOSE ${EXPOSED_UDP_PORT}
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["./docker-entrypoint.sh"]
 
 CMD ["-f", "/usr/local/etc/haproxy/haproxy.cfg"]
